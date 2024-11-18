@@ -87,14 +87,14 @@ header a {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-form {
+.short-search form {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
 }
 
-label {
+.short-search label {
     position: relative;
     display: inline-block;
     padding: 10px;
@@ -190,4 +190,96 @@ option {
   text-align: center;
   margin-bottom: 20px;
   color: #007bff;
+}
+.sub{
+  background-color: #17285a;
+  color: #000000;
+}
+
+.sub label{
+display: block;
+padding: 10px;
+border-radius: 8px;
+background-color: #f0f0f0;
+}
+.sub form{
+display: flex;
+gap: 12px;
+align-items: center;
+padding: 5%;
+justify-content: center;
+max-width: 80%;
+margin:  0 auto; 
+}
+.sub input{
+  padding: 8px;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+}
+.sub input[type="checkbox"]{
+  transform: scale(1.5);
+}
+.footer {
+  background-color: #f2f2f2;
+  padding: 20px;
+  text-align: center;
+}
+
+.footer .container {
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer_item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.footer .tel {
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+  margin-left: 10px;
+}
+
+.footer .tel:hover {
+  color: #666;
+}
+
+.footer .mail {
+  text-decoration: none;
+  margin-left: 10px;
+  color: #333;
+}
+
+.footer .mail:hover {
+  color: #666;
+}
+
+.footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer li {
+  margin-right: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+a:hover {
+  color: #666;
 }
