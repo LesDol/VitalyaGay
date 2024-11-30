@@ -108,6 +108,17 @@
           slidesPerView: 4,
           freeMode: true,
           watchSlidesProgress: true,
+          breakpoints:{   
+        992: {
+            slidesPerView: 3,  
+        },
+        576: {
+            slidesPerView: 2,  
+        },
+        0:{
+            slidesPerView: 1,  
+        }
+    }
         });
         var swiper2 = new Swiper(".mySwiper2", {
           spaceBetween: 10,
@@ -119,6 +130,7 @@
             swiper: swiper,
           },
         });
+
       </script>
     
 </body>
