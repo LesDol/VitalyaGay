@@ -1,6 +1,6 @@
 <?php
 
-$pdo = new PDO('mysql:host=localhost;dbname=new_live;charset=utf8', 
+$bd = new PDO('mysql:host=localhost;dbname=new_live;charset=utf8', 
 'root',
  null,
 [

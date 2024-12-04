@@ -68,3 +68,6 @@ table {
 @media(max-width: 525.90px){
 
 }
+.error {
+	color: red;
+}
