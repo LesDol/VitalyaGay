@@ -17,17 +17,23 @@
     <main>
         <section>
         
-            <form method="POST" action="api/registrationUser.php" class="register-form">
+            <form method="POST" action="api/registerUser.php" class="register-form">
                 <h1 class="register-form-title">Регистрация</h1>
                 <?php  
                 
-                function showError($field){
-                    $listErrors = $_SESSION['register-errors'];
-                    if(array_key_exists($field,$listErrors)){
-                        $error = implode(',',$listErrors[$field]);
-                        echo "<span class='error'>$error</span>";
+                function showError($field) {
+                    if (!array_key_exists('register-errors', $_SESSION)){
+                        echo '';
+                    } else {
+                        $listErrors = $_SESSION['register-errors'];
+                        
+                        if (array_key_exists($field, $listErrors)){
+                            $error = implode (',', $listErrors[$field]);
+        
+                            echo "<span class='error'> $error </span>";
+                        }
                     }
-                }
+                 }
                 ?> 
                 <label for="email">Email
                 <?php
