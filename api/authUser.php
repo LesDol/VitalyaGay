@@ -24,7 +24,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         SELECT id From users WHERE email = '$email'
         "
     )->fetchAll();
-    if (empty($errors)){
+    if (empty($user)){
         $errors['email'][] = 'user not found';
     }else{    
 
@@ -33,12 +33,26 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         SELECT id From users WHERE email = '$email' AND passwords = '$password'
         "
     )->fetchAll();
-    if (empty($errors)){
+    if (empty($checkUser)){
         $errors['password'][] = 'Wrong password';
-    }}
+    }
+}
+    if (empty($errors)){
+        $email = $formData['email'];
+        $password = $formData['password'];
+        $hash = time();
+        $token = base64_encode("hash=$hash&email=$email&password=$password");
+        
+        $bd->query("
+        UPDATE `users` SET api_token='$token'
+        WHERE email = '$email' AND passwords = '$password' 
+        "
+    )->fetchAll();
 
+    $_SESSION['token'] = $token;
+    header("Location: ../profile.php");
+    }
 
-    
     if (!empty($errors)){
         $_SESSION['auth-errors'] = $errors;
         header('Location: ../login.php');

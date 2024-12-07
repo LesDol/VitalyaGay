@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -11,7 +12,7 @@
 <body>
     <header>
         <div class="container">
-            <a href="index.html" class="header-link">На главную</a>
+            <a href="index.php" class="header-link">На главную</a>
         </div>
     </header>
     <main>
