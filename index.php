@@ -15,11 +15,11 @@
     <div class="logo"><a href="">New live</a></div>
     <div class="container">
         <ul>
-            <li><a href="#">Поиск</a></li>
-            <li><a href="#">Регистрация</a></li>
-            <li><a href="#">Личный кабинет</a></li>
-            <li><a href="#">Добавить</a></li>
-            <li><a href="#">Отзывы</a></li>
+            <li><a href="poisk.php">Поиск</a></li>
+            <li><a href="register.php">Регистрация</a></li>
+            <li><a href="login.php">Личный кабинет</a></li>
+            <li><a href="add.php">Добавить</a></li>
+            <li><a href="">Отзывы</a></li>
             <?php 
             if(array_key_exists('token',$_SESSION)){
                 echo"<li><a href='api/logoutUser.php' class='reviews'>Выход</a></li>";

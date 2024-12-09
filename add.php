@@ -1,4 +1,22 @@
-<?php session_start(); ?>
+<?php 
+session_start(); 
+include_once 'api/bd.php';
+if(array_key_exists('token',$_SESSION)){
+
+    $token = $_SESSION['token'];
+    $userId = $bd->query("
+    SELECT id FROM users WHERE api_token = '$token'"
+)->fetchAll();
+if(empty($userId)){
+    unset($_SESSION['token']);
+    header('Location: login.php');
+}
+
+}else{
+    //Если токена не ма , то редеректим на главную странницу
+    header('Location: index.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
