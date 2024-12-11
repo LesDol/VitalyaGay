@@ -1,4 +1,18 @@
-<?php session_start(); ?>
+<?php
+session_start();
+include_once 'api/bd.php';
+$searchParams = $_GET;
+$posts;
+if(!empty($searchParams)){
+    $animalType = $searchParams['animal-type'];
+    $address = $searchParams['address'];
+    $poisk = $bd->query("
+    SELECT * FROM posts WHERE type_animal = '$animalType' OR address = '$address'"
+)->fetchAll();
+$posts =$poisk;
+
+}
+?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -13,13 +27,20 @@
   <header>
     <h1>Результаты поиска животных</h1>
   </header>
-
+<section>
+  <form method="GET" action="poisk.php" class="search-form">
   <div class="container">
     <div class="search-form">
-      <input type="text" id="search-query" placeholder="Поиск по животным...">
-      <button>Поиск</button>
+      <select name="animal-type" id="animal-type">
+        <option value="">Выберите вид животного</option>
+        <option value="cat">Кот</option>
+        <option value="dog">Собака</option>
+      </select>
+      <input name = "address" type="text" placeholder="Район">
+      <button type="submit">Поиск</button>
     </div>
-
+  </form>
+</section>
     <table>
       <thead>
         <tr>
@@ -29,46 +50,35 @@
           <th>Клеймо</th>
           <th>Район</th>
           <th>Дата нахождения</th>
-          <th>Контактный номер</th>
+          <th>Подробности</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Собака</td>
-          <td><img src="img/cat-dog.jpg" alt="Фото"></td>
-          <td>Найден в парке, рядом с детской площадкой</td>
-          <td>1234</td>
-          <td>Центр</td>
-          <td>2024-11-01</td>
-          <td>89123456789</td>
-        </tr>
-        <tr>
-          <td>Кошка</td>
-          <td><img src="img/cat-dog.jpg" alt="Фото"></td>
-          <td>Найдена у дома на улице Гагарина</td>
-          <td>-</td>
-          <td>Южный</td>
-          <td>2024-11-05</td>
-          <td>89223456789</td>
-        </tr>
-        <tr>
-          <td>Собака</td>
-          <td><img src="img/cat-dog.jpg" alt="Фото"></td>
-          <td>Без привязки, в районе парка Победы</td>
-          <td>5678</td>
-          <td>Север</td>
-          <td>2024-11-07</td>
-          <td>89323456789</td>
-        </tr>
-        <tr>
-          <td>Кошка</td>
-          <td><img src="img/cat-dog.jpg" alt="Фото"></td>
-          <td>Убежала от хозяев, найдено на улице Ленинградской</td>
-          <td>-</td>
-          <td>Западный</td>
-          <td>2024-11-10</td>
-          <td>89423456789</td>
-        </tr>
+        <?php
+      if(!empty($posts)){
+          foreach($posts as $key => $value){
+          $typeAnimal = $value['type_animal'];
+          $info = $value['description'];
+          $data = $value['date_found'];
+          $mark = $value['mark'];
+          $place = $value['address'];
+          $id = $value['id'];
+          echo "        
+          <tr>
+          <td>$typeAnimal</td>
+          <td><img src='img/cat-dog.jpg' alt='Фото'></td>
+          <td>$info</td>
+          <td>$mark</td>
+          <td>$place</td>
+          <td>$data</td>
+          <td><a href='info.php?id=$id'>Подробнее</a></td>
+        </tr>";
+        } 
+      }
+
+
+        ?>
+
       </tbody>
     </table>
 
