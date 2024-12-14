@@ -6,8 +6,11 @@ $posts;
 if(!empty($searchParams)){
     $animalType = $searchParams['animal-type'];
     $address = $searchParams['address'];
+
     $poisk = $bd->query("
-    SELECT * FROM posts WHERE type_animal = '$animalType' OR address = '$address'"
+    SELECT * FROM posts WHERE (type_animal = '$animalType' OR address = '$address')
+    AND (status = 'active')
+    "
 )->fetchAll();
 $posts =$poisk;
 

@@ -1,4 +1,10 @@
-<?php session_start(); ?>
+<?php session_start(); 
+include_once 'api/bd.php';
+$posts = $bd->query("
+SELECT * FROM posts WHERE status = 'active' LIMIT 6"
+)->fetchAll();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,76 +39,28 @@
         <div class="container">
             <div class="swiper mySwiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="slide">
-                        <img src="img/img.jpg" alt="слайд 1">
-                        <div class="animal">
-                        <p>Нига. </p>
-                        <p>Описание : Не получил свою сгущенку. </p>
-                        <button>Подробнее</button>
+
+                <?php
+                foreach($posts as $key =>$value){
+                    $type = $value['type_animal'];
+                    $desc = $value['description'];
+                    $id = $value['id'];
+                    echo "
+                   <div class='swiper-slide'>
+                    <div class='slide'>
+                        <img src='img/img.jpg' alt='слайд 1'>
+                        <div class='animal'>
+                        <small>$type</small>
+                        <p>Описание : $desc</p>
+                        <a href='info.php?=id=$id'>Подробнее</a>
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide">
-                    <div class="slide">
-                        <img src="img/img.jpg" alt="слайд 1">
-                        <div class="animal">
-                        <p>Нига. </p>
-                        <p>Описание : Не получил свою сгущенку. </p>
-                        <button>Подробнее</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="slide">
-                        <img src="img/img.jpg" alt="слайд 1">
-                        <div class="animal">
-                        <p>Нига. </p>
-                        <p>Описание : Не получил свою сгущенку. </p>
-                        <button>Подробнее</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="slide">
-                        <img src="img/img.jpg" alt="слайд 1">
-                        <div class="animal">
-                        <p>Нига. </p>
-                        <p>Описание : Не получил свою сгущенку. </p>
-                        <button>Подробнее</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="slide">
-                        <img src="img/img.jpg" alt="слайд 1">
-                        <div class="animal">
-                        <p>Нига. </p>
-                        <p>Описание : Не получил свою сгущенку. </p>
-                        <button>Подробнее</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="slide">
-                        <img src="img/img.jpg" alt="слайд 1">
-                        <div class="animal">
-                        <p>Нига. </p>
-                        <p>Описание : Не получил свою сгущенку. </p>
-                        <button>Подробнее</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="slide">
-                        <img src="img/img.jpg" alt="слайд 1">
-                        <div class="animal">
-                        <p>Нига. </p>
-                        <p>Описание : Не получил свою сгущенку. </p>
-                        <button>Подробнее</button>
-                        </div>
-                    </div>
-                </div>
+
+                    ";
+
+                }
+                ?>
                 
             </div>
 
