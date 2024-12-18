@@ -31,6 +31,10 @@ if(empty($userId)){
     <header>
         <div class="container">
             <a href="index.php" class="header-link">На главную</a>
+            <a href="api/logoutUser.php" class="logout-back">
+                
+            <i class="fa fa-sign-out"></i>Выйти
+            </a>
         </div>
     </header>
     <main>

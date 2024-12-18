@@ -35,32 +35,22 @@ if(empty($userId)){
     <main>
         <section class="add">
             <div class="container">
-                <form action="
-                ">
-                <label for="phone">Номер телефона</label>
-                <input type="tel" name="phone" id="phone">
-                <label for="email">Email</label>
-                <input type="email" id="email" placeholder="example@mail.com">
-                <select name="" id="">
+                <form method = "POST" action ="api/addPost.php">
+                <select name="type" id="type">
                     <option value="cat">Кот</option>
                     <option value="dog">Собака</option>
                 </select>
-                <label for="photo">Фотография животного</label>
-                <input type="file" name="phone" id="phone">
                 <label for="desc">Дополнительная информация</label>
                 <textarea name="desc" id="desc"></textarea>
                 <label for="mark">Клеймо (если есть)</label>
                 <input type="text" name="mark" id="mark">
-                <select name="place" id="place">
-                    <option value="0">Кировский</option>
-                    <option value="1">Центр</option>
+                <select name="address" id="address">
+                    <option value="228 STREET">Кировский</option>
+                    <option value="STREET 228">Центр</option>
                 </select>
                 <label for="date">Дата</label>
                 <input type="date" name="date" id="date">
-                <label for="agree">
-                    <input type="checkbox" name="agree" id="agree">
-                    Согласие на обработку данных
-                </label>        
+                <button type="submit">Добавить</button> 
             </form>
             </div>
         </section>

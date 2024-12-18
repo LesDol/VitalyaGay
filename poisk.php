@@ -4,8 +4,11 @@ include_once 'api/bd.php';
 $searchParams = $_GET;
 $posts;
 if(!empty($searchParams)){
-    $animalType = $searchParams['animal-type'];
-    $address = $searchParams['address'];
+    $animalType = array_key_exists('animal-type',$_GET) ? 
+     $searchParams['animal-type'] : '';
+    $address = array_key_exists('address',$_GET) ?
+     $searchParams['address'] : '';
+
 
     $poisk = $bd->query("
     SELECT * FROM posts WHERE (type_animal = '$animalType' OR address = '$address')

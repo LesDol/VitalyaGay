@@ -52,7 +52,7 @@ SELECT * FROM posts WHERE status = 'active' LIMIT 6"
                         <div class='animal'>
                         <small>$type</small>
                         <p>Описание : $desc</p>
-                        <a href='info.php?=id=$id'>Подробнее</a>
+                        <a href='info.php?id=$id'>Подробнее</a>
                         </div>
                     </div>
                 </div>
@@ -76,10 +76,10 @@ SELECT * FROM posts WHERE status = 'active' LIMIT 6"
     </section>
     <section class="short-search">
         <div class="conyainer">
-            <form action="">
+            <form method = "GET" action ="poisk.php">
                 <h3>Поиск животного</h3>
                 <label for="type animal">
-                    <select name="type_animal" id="type_animal">
+                    <select name="animal-type" id="animal-type">
                         <option value="cat">
                             Кот
                         </option>
@@ -116,15 +116,15 @@ SELECT * FROM posts WHERE status = 'active' LIMIT 6"
     <section class="search">
         <div class="container">
             <div class="search_item">
-                <form action="">
-                    <label for="place">
-                        <select name="palce" id="place">
-                            <option value="0">Правый берег</option>
-                            <option value="1">Левый берег</option>
+                <form method = "GET" action ="poisk.php">
+                    <label for="name-address">
+                        <select name="name-address" id="name-address">
+                            <option value="228 STREET">Правый берег</option>
+                            <option value="STREET 228">Левый берег</option>
                         </select>
                     </label>
-                    <label for="animal">
-                        <select name="animal" id="animal">
+                    <label for="animal-type">
+                        <select name="animal-type" id="animal-type">
                             <option value="cat">Кот</option>
                             <option value="dog">Собака</option>
                             <option value="suslik">Суслик</option>
